@@ -2,4 +2,4 @@
 
 # ENDPOINTS:
 
-Lista productos: localhost/api/products (GET)
+Lista productos: localhost:8002/api/products (GET)
