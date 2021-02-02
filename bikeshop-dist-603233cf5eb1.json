@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bikeshop-dist",
+  "private_key_id": "603233cf5eb1e7b62dcaf9e7a908361b79114b67",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCKV6dNwtFExLfo\nAZGfB927zbBSddd0+pDWFhBt67qesv+J3sSOvH1dY8ZDtZCVqq4ReaEhFpk0oRER\nHP2rnEGsE9Uqtra5Niqw486N8iHXEJ0fXUZxMAKgFysHdI81R7V6q5iEM6K2IQZc\nE+ggRdyUpJFo5QUfcns85UUIWUAOJwQOZnwmicq7W4QQMbw3LgRM4Nb7Cw3FPWac\nh1Qa1BE3Zo1R46/aWQ/cMJwQW/E9VON7zA5rnhMb9iiV+d1gbC2E45hccQq0xV1c\nLgZOSO5N27CVKGQDT+5aXUqeISijzy1cK6FOJD2vrejTXnNIanwb0xN2t9vFgG6C\n04pXhR49AgMBAAECggEAQ2a1UoOKZdDaMSUih7LTaz6pm2Nil9HEYynY01U4VT2s\nlsV8Sna3NZr46+A4E1NW/5ic0nwqJKQcppPTW5sDvAzlnKvslow3fHthFXNU3W1w\nv+k3+smDXfArvLQjWbgYSS31XuOxcL7iVFY2kBK5h4oudkaumkWymVayrYCeXsYY\nHxWSFFZ5ziZUYpuBnboDknOUkST+oP7nNO/c9iLCcB7XZNPV08Bmk6CtQQmt3JpS\nzRAvFmdAR2BYxuA2e8G6wui6pJUWoUNpG1judneeujPuB9O0B2IDxb8s3m8F+Tsn\nIjj9R727hdUG++fm7OdkNBa0OFHXB+MNrEdYZbNYmQKBgQDAH6HWULoUSad8iYoP\nCZ9jzS9x0D//FzHWRrFth7ayf2giiZrI3qYKOFIe8nVYKwTziu2fvyACIN6zCj8R\nmCgaMz57ubthULWpUpA7TABVAi6qI7lzTMFhnGN5/1t9rm+X4onwtkkjJSfT9v5q\nrnq9zCoCSbIioLOxedcqceT+UwKBgQC4VoBkp0HRL4aAZBF1RRFJT/acRh7XqeE6\nxf4JjBPbScZEI/anMvA1kZhYIExt83F4rUoGxx++Fyn+lns0v4ZsqUffGTYDQ8AW\nDc0dMYnNy74mFQ6y69dOxLgQ8KXqQ0+T9PC7Duh/tbvfZHUtXQArpHqL/xC6fi24\n2vT+OAw/LwKBgCDrCpKrAEcLm6vl8QbEkk/KT0/D68MsWTiqoinvL+mDlPcd9qxm\nIbLslX2B84Mo089axX4yhCx5L08j+UxtcqmSkCko2KdC6e1aHSZbzk7CcfZq6pKL\n2zJ7VjwH+cgeBDbU9OeOhBeGfT1/O3ZR8OvmOGht8hymxkMpail2nFLLAoGAEPdl\nOd5rIGXPa2HKeZCx1p2VhSyvCgqIwHAYwagy66wOo5brzNfTZBrSesn+PuB5QTIx\n7g3FzikzpEsVa/V02et6wf4ACqzhsSX0CwvUMyzdg4PMposudgGFL4n2u2kWmfeh\ncJYesCJ5+EW2w0YcDehFnz0KvR9/9dOxWPSvq+ECgYA4eNtj3jov0QKjOBz+5vsg\nyT9MXt0/GHqxTkuERuxp1/KwdlnD9Zli75NCZy+b9JnVDayRNGeK0edv0mi1ZI+Z\n95A30bbuzts4Jzy+jbFlCqlebDvwm7nEOX6CIq62+CndE2PFPo0ca+H3RlTLls6N\nj0A6Kh0BgElhamoUdPHi+g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "pub-sub-key@bikeshop-dist.iam.gserviceaccount.com",
+  "client_id": "114273857413123627108",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pub-sub-key%40bikeshop-dist.iam.gserviceaccount.com"
+}

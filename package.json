@@ -1,0 +1,31 @@
+{
+    "name": "pubsub-dist-de",
+    "version": "1.0.0",
+    "description": "proyecto de sistemas distribuidos pubsub",
+    "main": "src/orders.js",
+    "scripts": {
+        "start": "SET NODE_ENV=production node src/orders.js",
+        "start:main": "nodemon src/orders.js",
+        "start:products": "nodemon src/products.js",
+        "start:notification": "nodemon src/notification-sub.js"
+    },
+    "author": "Daniel Lopez",
+    "license": "MIT",
+    "dependencies": {
+        "@google-cloud/pubsub": "^1.2.0",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "helmet": "^3.22.0",
+        "morgan": "^1.10.0",
+        "express-flash": "0.0.2",
+        "express-myconnection": "^1.0.4",
+        "express-session": "^1.16.2",
+        "cookie-parser": "^1.4.4",
+        "mysql": "^2.18.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
+}
