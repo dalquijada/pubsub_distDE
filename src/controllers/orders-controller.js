@@ -14,11 +14,11 @@ module.exports = {
             message: "Orders route confirmed :)",
         });
     },
-    //Añadir la función para quitar inventario del objeto en la BD
+    //Actualizar productos en base a la compra de clientes y publicar mensaje pubsub
     createOrders: async (req, res) => {
         var ordersObj = req.body;
         var products = ordersObj.productos;
-        var notif = "Nueva orden añadida por el cliente " + ordersObj.cliente;
+        var notif = ordersObj.cliente;
         console.log(products);
 
         req.getConnection(function (error, conn) {

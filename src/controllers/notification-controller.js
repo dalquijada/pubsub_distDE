@@ -7,7 +7,7 @@ const timeout = 10;
 
 const pubsubRepository = require("../repositories/pub-sub-repo");
 const {
-    listenForPullMessages,
+    listenForPullMessagesC,
     listenForPushMessages,
     listenForPullMessagesA,
 } = pubsubRepository;
@@ -20,28 +20,31 @@ module.exports = {
         });
     },
 
-    pullNotification: (req, res) => {
-        console.log("hellou");
+    //Extraer mensajes pubsub de suscripcion clientes
+    pullNotificationC: (req, res) => {
+        console.log("pullC");
+        req.getConnection(function (error, conn) {
+            try {
+                listenForPullMessagesC(
+                    pubSubClient,
+                    subscriptionName1,
+                    timeout,
+                    messages,
+                    conn
+                );
 
-        try {
-            listenForPullMessages(
-                pubSubClient,
-                subscriptionName1,
-                timeout,
-                req
-            );
-
-            //Función para añadir tantas instancias como usuarios clientes se tengan en la tabla notificaciones
-        } catch (error) {
-            return res.status(500).json({
-                success: false,
-                message: "Couldn't receive orders object :(",
-                data: error,
-            });
-        }
-        console.log(messageNotif);
+                //Función para añadir tantas instancias como usuarios clientes se tengan en la tabla notificaciones
+            } catch (error) {
+                return res.status(500).json({
+                    success: false,
+                    message: "Couldn't receive orders object :(",
+                    data: error,
+                });
+            }
+        });
     },
 
+    //Extraer mensajes pubsub de suscripcion admins
     pullNotificationA: (req, res) => {
         console.log("PullA");
         req.getConnection(function (error, conn) {
@@ -64,10 +67,10 @@ module.exports = {
                 });
             }
         });
-        // console.log(messageNotif);
     },
-    //Enviar notificaciones de compras realizadas a administradores
-    SendNotificationA: (req, res) => {
+
+    //Enviar notificaciones de compras realizadas a administradores / Productos nuevos a clientes
+    SendNotification: (req, res) => {
         console.log("SendA");
         req.getConnection(function (error, conn) {
             conn.query(
@@ -77,7 +80,7 @@ module.exports = {
                     if (err) {
                         console.log("chimbo");
                     } else {
-                        console.log("Funciona enviar notifs admin");
+                        console.log("Funciona enviar notifs users");
                         res.json(rows);
                         conn.query(
                             "DELETE FROM `notificaciones` WHERE id_usuario = ?",
@@ -87,7 +90,7 @@ module.exports = {
                                     console.log("chimbo");
                                 } else {
                                     console.log(
-                                        "Funciona borrar notifs admin post entrega"
+                                        "Funciona borrar notifs users post entrega"
                                     );
                                     console.log(
                                         "Deleted Row(s):",
@@ -100,7 +103,6 @@ module.exports = {
                 }
             );
         });
-        // console.log(messageNotif);
     },
 
     pushNotification: async (req, res) => {

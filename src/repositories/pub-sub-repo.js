@@ -1,4 +1,5 @@
 module.exports = {
+    //Publicar mensaje mediante pubsub a topicName
     publishMessage: async (pubSubClient, topicName, payload) => {
         const dataBuffer = Buffer.from(JSON.stringify(payload));
 
@@ -8,12 +9,14 @@ module.exports = {
         console.log(`Message ${messageId} published.`);
         return messageId;
     },
-    //CAMBIAR AL IGUAL QUE PULLA PERO PARA PRODUCTOS -> CLIENTES
-    listenForPullMessages: (
+
+    //Extraer mensajes pubsub para clientes y guardar notificaciones en la BD
+    listenForPullMessagesC: (
         pubSubClient,
         subscriptionName,
         timeout,
-        messageNotif
+        messages,
+        conn
     ) => {
         const subscription = pubSubClient.subscription(subscriptionName);
 
@@ -22,10 +25,10 @@ module.exports = {
             console.log(`Received message ${message.id}:`);
             console.log(`\tData: ${message.data}`);
             console.log(`\tAttributes: ${message.attributes}`);
+            messages.push(`${message.data}`);
             messageCount += 1;
 
             message.ack();
-            messageNotif.push(message.data);
         };
 
         subscription.on("message", messageHandler);
@@ -33,9 +36,43 @@ module.exports = {
         setTimeout(() => {
             subscription.removeListener("message", messageHandler);
             console.log(`${messageCount} message(s) received.`);
+
+            conn.query(
+                "SELECT * FROM `usuarios` WHERE isAdmin = 0",
+                function (err, rows, fields) {
+                    if (err) {
+                        req.flash("error", err);
+                    } else {
+                        console.log("Funciona Obtener Usuarios");
+                        for (var i = 0; i < rows.length; i++) {
+                            var notif = {
+                                id_usuario: rows[i].idusuarios,
+                                mensaje:
+                                    "Nuevo producto disponible " + messages,
+                            };
+                            console.log(notif);
+                            conn.query(
+                                "INSERT INTO `notificaciones` SET ?",
+                                notif,
+                                function (err, result) {
+                                    if (err) {
+                                        console.log("chimbo");
+                                    } else {
+                                        console.log(
+                                            "Funciona Añadir notifs Clientes"
+                                        );
+                                        return;
+                                    }
+                                }
+                            );
+                        }
+                    }
+                }
+            );
         }, timeout * 1000);
     },
 
+    //Extraer mensajes pubsub para admins y guardar notificaciones en la BD
     listenForPullMessagesA: (
         pubSubClient,
         subscriptionName,
@@ -70,7 +107,9 @@ module.exports = {
                         for (var i = 0; i < rows.length; i++) {
                             var notif = {
                                 id_usuario: rows[i].idusuarios,
-                                mensaje: messages,
+                                mensaje:
+                                    "Nueva Orden añadida por el cliente " +
+                                    messages,
                             };
                             console.log(notif);
                             conn.query(
