@@ -33,7 +33,7 @@ app.use(
     })
 );
 app.use(flash());
-app.use(myConnection(mysql, dbOptions, "pool"));
+app.use(myconnection(mysql, dbOptions, "pool"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const { MAIN_PORT, NODE_ENV } = process.env;

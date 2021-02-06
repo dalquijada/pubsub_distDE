@@ -8,7 +8,6 @@ const pubsubRepository = require("../repositories/pub-sub-repo");
 const { publishMessage } = pubsubRepository;
 
 module.exports = {
-    
     orders: (req, res) => {
         return res.status(200).json({
             success: true,
@@ -17,13 +16,31 @@ module.exports = {
     },
     //Añadir la función para quitar inventario del objeto en la BD
     createOrders: async (req, res) => {
-        let ordersObj = req.body;
-        let messageId = await publishMessage(
-            pubSubClient,
-            topicName,
-            ordersObj
-        );
-        console.log(ordersObj);
+        var ordersObj = req.body;
+        var products = ordersObj.productos;
+        var notif = "Nueva orden añadida por el cliente " + ordersObj.cliente;
+        console.log(products);
+
+        req.getConnection(function (error, conn) {
+            for (var i = 0; i < products.length; i++) {
+                conn.query(
+                    "UPDATE `productos` SET cantidad = ? WHERE idproductos = " +
+                        products[i].id,
+                    products[i].cantidad,
+                    function (err, rows, fields) {
+                        if (err) {
+                            req.flash("error", err);
+                        } else {
+                            console.log("Funciona añadir Orden");
+                        }
+                    }
+                );
+            }
+        });
+        //Envio mensaje de orden creada mediante pubsub
+        var messageId = await publishMessage(pubSubClient, topicName, notif);
+
+        console.log(notif);
         return res.status(200).json({
             success: true,
             message: `Message ${messageId} published :)`,
