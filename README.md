@@ -13,6 +13,8 @@ Obtener Notificaciones en la BD Admins/Clientes:  localhost:8003/api/notificatio
 Añadir Producto: localhost:8002/api/products/create  
 Editar Producto: localhost:8002/api/products/(id_producto)  
 Añadir Orden: localhost:8001/api/orders/create  
+Registro Usuario: localhost:8004/api/users/register  
+Login Usuario: localhost:8004/api/users/login  
 
 
 
