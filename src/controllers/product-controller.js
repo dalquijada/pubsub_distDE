@@ -35,7 +35,6 @@ module.exports = {
                 function (err, result) {
                     if (err) {
                         req.flash("error", err);
-                        console.log("pupu");
                     } else {
                         req.flash("success", "Producto Añadido Exitosamente");
                         console.log("Funciona añadir producto");
@@ -81,7 +80,6 @@ module.exports = {
                 function (err, result) {
                     if (err) {
                         req.flash("error", err);
-                        console.log("pupu");
                     } else {
                         console.log("Funciona Actualizar producto");
                         return res.json(result);

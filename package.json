@@ -7,7 +7,8 @@
         "start": "SET NODE_ENV=production node src/orders.js",
         "start:main": "nodemon src/orders.js",
         "start:products": "nodemon src/products.js",
-        "start:notification": "nodemon src/notification-sub.js"
+        "start:notification": "nodemon src/notification-sub.js",
+        "start:users": "nodemon src/users.js"
     },
     "author": "Daniel Lopez",
     "license": "MIT",
